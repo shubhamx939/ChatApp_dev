@@ -52,7 +52,7 @@ Postgres needs to run as a service on your machine.
 	1. List databases
 		- `\l`
 	2. create a new database for our project
-		- `CREATE DATABASE chatpp_dev;`
+		- `CREATE DATABASE chatapp_dev;`
 	3. Create a new user that has permissions to use that database
 		- `CREATE USER chatapp_admin WITH PASSWORD 'root@123';`
 		- These credentials are important to remember because they are used in the django postgres configuration.
@@ -64,14 +64,14 @@ Postgres needs to run as a service on your machine.
 		1. disconnect from db
 			- `\q`
 		2. Connect to the db with user
-			- `psql chatpp_dev chatapp_admin`
+			- `psql chatapp_dev chatapp_admin`
 
 
 ## Django and Postgres Setup (Already setup done)
 
 1. Update `settings.py` with the following postgres configuration
 	```
-	DB_NAME = "chatpp_dev"
+	DB_NAME = "chatapp_dev"
 	DB_USER = "chatapp_admin"
 	DB_PASSWORD = "root@123"
 	DATABASES = {
