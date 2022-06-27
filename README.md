@@ -59,7 +59,7 @@ Postgres needs to run as a service on your machine.
 	4. List all users
 		- `/du`
 	5. Give the new user all privileges on new db
-		- `GRANT ALL PRIVILEGES ON DATABASE chatpp_dev TO chatapp_admin;`
+		- `GRANT ALL PRIVILEGES ON DATABASE chatapp_dev TO chatapp_admin;`
 	6. Test
 		1. disconnect from db
 			- `\q`
