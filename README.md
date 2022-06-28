@@ -145,6 +145,32 @@ Follow https://channels.readthedocs.io/en/latest/installation.html
 	```
 4. Now you create Consumers and add to the `URLRouter` list.
 
+## Flow the ChatApp Project (After above steps once the server is up and running)
+1. User needs to register an account 
+2. User needs to login with the same credentials
+3. Second user can register an account
+4. Second user can also login with its credentials
+5. From 1st user dashboard he can search the 2nd user
+6. After the search he can send the friend request to 2nd user
+7. 2nd user can accept the friend request of 1st user
+8. After accepting the friend request both users became friends
+9. In the account section friends tab is available with the recent added friend
+10. Goto to the friend tab and click on message button
+11. After clicking on message button the one to one private chat window will come and there both the users can chat
+12. On the home screen the public chat window is available for chatting publicly
+13. Screenshots have been kept inside "ChatApp_dev/static/screenshots" path for the reference
+
+## Different way you can authenticate the web socket in Django
+1. Session Authentication :
+	If you authenticate your users, Django will create a session to track authenticated users and will assign a session variable to them. This session value will be sent to client-side via set-cookie header in response. And browser will save it, So all other requests will include this header by default. Even web-socket requests to django-channels.
+
+2. Token Authentication (provide token in HTTP header) :
+	If the Authorization token is provided in header of HTTP requests, then you can create a custom Authentication Middleware, So that it intercepts requests coming with web-socket to django-channels routers.This Middleware, will check keys provided in HTTP header. If authorization is sent, will try to fetch it’s value. If the token name is Token then will try to find the corresponded Token Object for this in database. If so will fetch the user for that and update scope['user'] with that value.
+
+3. Token Authentication (No HTTP header required) : 
+	Whenever a socket is created between client-side and django-channels, Until the token is not provided in first request of user in socket’s data, and that token is not valid; No other data will be transferred between them.
+
+
 ## References
 1. https://docs.djangoproject.com/en/2.2/
 2. https://www.python.org/downloads/release/python-380/
@@ -161,3 +187,4 @@ Follow https://channels.readthedocs.io/en/latest/installation.html
 13. https://dev.to/earthcomfy/django-channels-a-simple-chat-app-part-2-eh9
 14. https://djangopackages.org/grids/g/chat/
 15. https://codewithstein.com/django-realtime-chat-app-tutorial-simple-django-tutorial-with-channels-and-redis/
+16. https://reza-ta.medium.com/django-channels-web-socket-authentication-approaches-3a56954b4120
